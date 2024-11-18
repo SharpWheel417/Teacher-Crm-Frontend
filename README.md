@@ -19,13 +19,6 @@ npm install react-icons --save
 - [TypeScript](https://www.typescriptlang.org)
 - [Framer Motion](https://www.framer.com/motion)
 
-## How to Use
-
-To clone the project, run the following command:
-
-```bash
-git clone https://github.com/nextui-org/vite-template.git
-```
 
 ### Install dependencies
 
@@ -40,16 +33,6 @@ npm install
 ```bash
 npm run dev
 ```
-
-### Setup pnpm (optional)
-
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
-
-```bash
-public-hoist-pattern[]=*@nextui-org/*
-```
-
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
 
 ## License
 
