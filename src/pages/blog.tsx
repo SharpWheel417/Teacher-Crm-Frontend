@@ -1,3 +1,5 @@
+import MyCalendar from "../components/calendar";
+
 import { title } from "@/components/primitives";
 import DefaultLayout from "@/layouts/default";
 
@@ -9,6 +11,7 @@ export default function DocsPage() {
           <h1 className={title()}>Blog</h1>
         </div>
       </section>
+      <MyCalendar />
     </DefaultLayout>
   );
 }

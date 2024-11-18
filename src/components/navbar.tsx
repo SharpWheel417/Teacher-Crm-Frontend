@@ -1,4 +1,3 @@
-import { Button } from "@nextui-org/button";
 import { Kbd } from "@nextui-org/kbd";
 import { Link } from "@nextui-org/link";
 import { Input } from "@nextui-org/input";
@@ -13,16 +12,18 @@ import {
 } from "@nextui-org/navbar";
 import { link as linkStyles } from "@nextui-org/theme";
 import clsx from "clsx";
+import { Button } from "@nextui-org/button";
 
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
-import {
-  SearchIcon,
-  MyProfileIcon,
-} from "@/components/icons";
+import { SearchIcon, MyProfileIcon } from "@/components/icons";
 import { Logo } from "@/components/icons";
 
-export const Navbar = () => {
+interface NavbarProps {
+  signIn: boolean;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ signIn }) => {
   const searchInput = (
     <Input
       aria-label="Search"
@@ -74,20 +75,18 @@ export const Navbar = () => {
           ))}
         </div>
       </NavbarContent>
-
       <NavbarContent
         className="hidden sm:flex basis-1/5 sm:basis-full"
         justify="end"
       >
+                <ThemeSwitch />
         <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
-        <MyProfileIcon className="white"></MyProfileIcon>
+        <MyProfileIcon className="white" />
       </NavbarContent>
-
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
         <ThemeSwitch />
         <NavbarMenuToggle />
       </NavbarContent>
-
       <NavbarMenu>
         {searchInput}
         <div className="mx-4 mt-2 flex flex-col gap-2">
@@ -110,6 +109,14 @@ export const Navbar = () => {
           ))}
         </div>
       </NavbarMenu>
+      {signIn ? (
+        <Button
+          className="bg-violet-600"
+          onClick={() => (window.location.href = "/sign")}
+        >
+          Вход/Регистрация
+        </Button>
+      ) : null}
     </NextUINavbar>
   );
 };

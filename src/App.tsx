@@ -5,11 +5,19 @@ import DocsPage from "@/pages/docs";
 import PricingPage from "@/pages/pricing";
 import BlogPage from "@/pages/blog";
 import AboutPage from "@/pages/about";
+import SignPage from "@/pages/sign";
+import AdminPage from "@/pages/admin/admin";
+import AdminStudentsPage from "@/pages/admin/students";
 
 function App() {
   return (
     <Routes>
       <Route element={<IndexPage />} path="/" />
+      <Route element={<SignPage />} path="/sign" />
+
+      <Route element={<AdminPage />} path="/admin" />
+      <Route element={<AdminStudentsPage />} path="/admin/students" />
+
       <Route element={<DocsPage />} path="/docs" />
       <Route element={<PricingPage />} path="/pricing" />
       <Route element={<BlogPage />} path="/blog" />
