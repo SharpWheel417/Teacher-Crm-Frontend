@@ -8,12 +8,6 @@ import { UserList} from "@/components/userList";
 import { StudentTable } from "@/components/studentTable";
 
 export default function AdminPage() {
-  const [roleComponent, setRoleComponent] = useState("none");
-
-  const handleRoleState = (isRole: string) => {
-    setRoleComponent(isRole);
-  };
-
 
   const news = [
     {title: "xd", text: "xd", textTwo: "xd", srcImage: "https://random.imagecdn.app/270/170"},
@@ -48,7 +42,9 @@ export default function AdminPage() {
       age: "16",
       avatar: "https://i.pravatar.cc/150?43",
       email: "ivan.ivanov@example.com",
-      actions: "Просмотр"
+      actions: "Просмотр",
+      attendance: "92",
+      grades: "5, Дз: 5",
     },
     {
       id: "2",
@@ -59,7 +55,9 @@ export default function AdminPage() {
       age: "17",
       avatar: "https://i.pravatar.cc/150?42",
       email: "maria.petrova@example.com",
-      actions: "Редактировать"
+      actions: "Редактировать",
+      attendance: "78",
+      grades: "5, Дз: 5",
     },
     {
       id: "3",
@@ -70,7 +68,9 @@ export default function AdminPage() {
       age: "15",
       avatar: "https://i.pravatar.cc/150?41",
       email: "sergey.smirnov@example.com",
-      actions: "Удалить"
+      actions: "Удалить",
+      attendance: "88",
+      grades: "5, Дз: 5",
     },
     {
       id: "4",
@@ -81,7 +81,9 @@ export default function AdminPage() {
       age: "16",
       avatar: "https://i.pravatar.cc/150?44",
       email: "ekaterina.kuznetsova@example.com",
-      actions: "Просмотр"
+      actions: "Просмотр",
+      attendance: "95",
+      grades: "5, Дз: 5"
     },
     {
       id: "5",
@@ -92,7 +94,9 @@ export default function AdminPage() {
       age: "17",
       avatar: "https://i.pravatar.cc/150?45",
       email: "alexey.sokolov@example.com",
-      actions: "Редактировать"
+      actions: "Редактировать",
+      attendance: "67",
+      grades: "5, Дз: 5"
     },
     {
       id: "6",
@@ -103,7 +107,9 @@ export default function AdminPage() {
       age: "15",
       avatar: "https://i.pravatar.cc/150?46",
       email: "natalya.morozova@example.com",
-      actions: "Удалить"
+      actions: "Удалить",
+      attendance: "90",
+      grades: "5, Дз: 5"
     },
     {
       id: "7",
@@ -114,7 +120,9 @@ export default function AdminPage() {
       age: "16",
       avatar: "https://i.pravatar.cc/150?47",
       email: "dmitry.kiselev@example.com",
-      actions: "Просмотр"
+      actions: "Просмотр",
+      attendance: "84",
+      grades: "5, Дз: 5"
     },
     {
       id: "8",
@@ -125,7 +133,9 @@ export default function AdminPage() {
       age: "17",
       avatar: "https://i.pravatar.cc/150?48",
       email: "olga.orlova@example.com",
-      actions: "Редактировать"
+      actions: "Редактировать",
+      attendance: "73",
+      grades: "5, Дз: 5"
     },
     {
       id: "9",
@@ -136,7 +146,9 @@ export default function AdminPage() {
       age: "15",
       avatar: "https://i.pravatar.cc/150?49",
       email: "maksim.zakharov@example.com",
-      actions: "Удалить"
+      actions: "Удалить",
+      attendance: "89",
+      grades: "5, Дз: 5"
     },
     {
       id: "10",
@@ -147,9 +159,12 @@ export default function AdminPage() {
       age: "16",
       avatar: "https://i.pravatar.cc/150?50",
       email: "anna.pavlova@example.com",
-      actions: "Просмотр"
+      actions: "Просмотр",
+      attendance: "97",
+      grades: "5, Дз: 5"
     }
   ];
+  
 
 
 
@@ -157,7 +172,7 @@ export default function AdminPage() {
     <DefaultLayout noneContainer={false}>
       <div className="flex flex-row">
         <Sidebar />
-        <div className="flex flex-col" style={{width: '60%'}}>
+        {/* <div className="flex flex-col" style={{width: '60%'}}>
         <div className="flex felx-row px-4">
           {news.map((item, index) => (
 
@@ -176,7 +191,7 @@ export default function AdminPage() {
         <div className="flex felx-row px-4">
         <UserList style={{marginLeft: '20px'}} users={usersQuestions} />
         </div>
-        </div>
+        </div> */}
         <StudentTable users={users}/>
 
       </div>

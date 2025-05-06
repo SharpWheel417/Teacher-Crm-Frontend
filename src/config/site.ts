@@ -8,14 +8,14 @@ export const siteConfig = {
       label: "Главная",
       href: "/",
     },
-    {
-      label: "Цены",
-      href: "/pricing",
-    },
-    {
-      label: "Блог",
-      href: "/blog",
-    },
+    // {
+    //   label: "Цены",
+    //   href: "/pricing",
+    // },
+    // {
+    //   label: "Блог",
+    //   href: "/blog",
+    // },
     {
       label: "Описание",
       href: "/about",

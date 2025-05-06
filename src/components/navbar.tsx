@@ -26,7 +26,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ signIn }) => {
   const searchInput = (
     <Input
-      aria-label="Search"
+      aria-label="Поиск"
       classNames={{
         inputWrapper: "bg-default-100",
         input: "text-sm",
@@ -37,7 +37,7 @@ export const Navbar: React.FC<NavbarProps> = ({ signIn }) => {
         </Kbd>
       }
       labelPlacement="outside"
-      placeholder="Search..."
+      placeholder="Поиск..."
       startContent={
         <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
       }
@@ -55,7 +55,7 @@ export const Navbar: React.FC<NavbarProps> = ({ signIn }) => {
             href="/"
           >
             <Logo />
-            <p className="font-bold text-inherit">Next-Teacher-CRM</p>
+            <p className="font-bold text-inherit">Академика</p>
           </Link>
         </NavbarBrand>
         <div className="hidden lg:flex gap-4 justify-start ml-2">
@@ -111,7 +111,7 @@ export const Navbar: React.FC<NavbarProps> = ({ signIn }) => {
       </NavbarMenu>
       {signIn ? (
         <Button
-          className="bg-violet-600"
+          className="bg-violet-600  text-white"
           onClick={() => (window.location.href = "/sign")}
         >
           Вход/Регистрация

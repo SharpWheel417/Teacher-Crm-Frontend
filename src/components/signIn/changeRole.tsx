@@ -11,18 +11,21 @@ const ChangeRole: React.FC<{ setRoleComponents: (role: string) => void }> = ({
   const [heightCard, setHeightCard] = useState("h-96 w-96");
   const [fontIcon, setFontIcon] = useState("20vh");
 
+  const [iconColor, setIconColor] = useState("rgb(124 58 237 / var(--tw-bg-opacity))");
+  
   const [teachActive, setTeachActive] = useState("");
   const [studentActive, setStudentActive] = useState("");
   const [adminActive, setAdminActive] = useState("");
-
-
+  
+  
   const handleButtonClick = (isRole: string) => {
     setRoleComponents(isRole);
-
+    
     // Меняем размер кнопки и иконки
     setHeightCard("h-20 w-20");
     setFontIcon('5vh')
-
+    setIconColor("white");
+    
     // Убираем окрас у кнопки
     setTeachActive("")
     setStudentActive("")
@@ -48,12 +51,12 @@ const ChangeRole: React.FC<{ setRoleComponents: (role: string) => void }> = ({
       >
         <div className="flex flex-col">
 
-        <PiChalkboardTeacherLight style={{ fontSize: fontIcon }} />
-        <h2>Учитель</h2>
+        <PiChalkboardTeacherLight style={{ fontSize: fontIcon, color: iconColor }} />
+        <h2 style={{color: iconColor}}>Учитель</h2>
         </div>
       </Button>
 
-      <Button
+      {/* <Button
         isIconOnly
         className={ heightCard + adminActive}
         onClick={() => handleButtonClick("isAdmin")}
@@ -63,7 +66,7 @@ const ChangeRole: React.FC<{ setRoleComponents: (role: string) => void }> = ({
         <GrUserAdmin style={{ fontSize: fontIcon }} />
         <h2>Админ</h2>
         </div>
-      </Button>
+      </Button> */}
 
 
       <Button
@@ -72,8 +75,8 @@ const ChangeRole: React.FC<{ setRoleComponents: (role: string) => void }> = ({
         onClick={() => handleButtonClick("isStudent")}
       >
         <div className="flex flex-col">
-        <PiStudent style={{ fontSize: fontIcon }} />
-        <h2>Ученик</h2>
+        <PiStudent style={{ fontSize: fontIcon, color: iconColor }} />
+        <h2 style={{color: iconColor}}>Ученик</h2>
         </div>
       </Button>
     </div>

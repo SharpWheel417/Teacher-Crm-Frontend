@@ -26,7 +26,7 @@ export default function IndexPage() {
       </section>
       <section className="flex flex-row items-center justify-center gap-4">
         <Button onClick={() => (window.location.href = "/sign")}>Начать</Button>
-        <Button className="bg-violet-600">Узнать подробнее</Button>
+        <Button className="bg-violet-600 text-white">Узнать подробнее</Button>
       </section>
     </DefaultLayout>
   );

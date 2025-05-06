@@ -19,7 +19,7 @@ export const InputsData: React.FC<DataProps> = ({isTeacher}) => {
         <h5>Пароль</h5>
         <Input className="" type="password" />
         <br />
-        <Button className="bg-violet-600">Войти</Button>
+        <Button className="bg-violet-600 text-white">Войти</Button>
       </div>
 
       <div className="" style={{ width: "30%", marginTop: '20px', marginBottom: 'auto' }}>
@@ -50,8 +50,8 @@ export const InputsData: React.FC<DataProps> = ({isTeacher}) => {
         <Input className="" type="password" />
         <br />
         <Button
-        className="bg-violet-600"
-        onClick={() => { window.location.href = "/admin"}}>Регистарция</Button>
+        className="bg-violet-600 text-white"
+        onClick={() => { window.location.href = "/teacher"}}>Регистарция</Button>
       </div>
     </div>
   );

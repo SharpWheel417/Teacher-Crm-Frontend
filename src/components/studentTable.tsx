@@ -10,6 +10,13 @@ import {
   User,
   Chip,
   Tooltip,
+  useDisclosure,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
 } from "@nextui-org/react";
 
 import { EditIcon } from "@/icons/EdinIcon";
@@ -33,13 +40,23 @@ export const StudentTable: React.FC<{
     avatar: string;
     email: string;
     actions: string;
+    attendance: string; // Новое поле
+    grades: string; // Новое поле
   }[];
 }> = ({ users }) => {
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [selectedUser, setSelectedUser] = React.useState<typeof users[0] | null>(null);
+
+
+
   const columns = [
-    { name: "NAME", uid: "name" },
-    { name: "ROLE", uid: "role" },
-    { name: "STATUS", uid: "status" },
-    { name: "ACTIONS", uid: "actions" },
+    { name: "ФИО", uid: "name" },
+    { name: "Предмет", uid: "role" },
+    // { name: "STATUS", uid: "status" },
+    { name: "Успеваемость", uid: "attendance" }, // Новая колонка
+    { name: "Посление оценки", uid: "grades" },         // Новая колонка
+    { name: "Действия", uid: "actions" },
   ];
 
   const renderCell = React.useCallback(
@@ -54,6 +71,8 @@ export const StudentTable: React.FC<{
         avatar: string;
         email: string;
         actions: string;
+        attendance: string;
+        grades: string;
       },
       columnKey: keyof typeof user,
     ) => {
@@ -65,7 +84,7 @@ export const StudentTable: React.FC<{
             <User
               avatarProps={{ radius: "lg", src: user.avatar }}
               description={user.email}
-              name={cellValue}
+              name={cellValue?.toString()}
             >
               {user.email}
             </User>
@@ -73,32 +92,56 @@ export const StudentTable: React.FC<{
         case "role":
           return (
             <div className="flex flex-col">
-              <p className="text-bold text-sm capitalize">{cellValue}</p>
-              <p className="text-bold text-sm capitalize text-default-400">
+              <p className="text-bold text-sm capitalize">{user.team}</p>
+              {/* <p className="text-bold text-sm capitalize text-default-400">
                 {user.team}
-              </p>
+              </p> */}
             </div>
           );
         case "status":
           return (
-            <Chip
-              className="capitalize"
-              color={statusColorMap[user.status as keyof typeof statusColorMap]}
-              size="sm"
-              variant="flat"
-            >
-              {cellValue}
-            </Chip>
+            <p className="text-bold text-sm capitalize">{cellValue?.toString()}</p>
+            // <Chip
+            //   className="capitalize"
+            //   color={statusColorMap[user.status as keyof typeof statusColorMap]}
+            //   size="sm"
+            //   variant="flat"
+            // >
+            //   {cellValue?.toString()}
+            // </Chip>
+          );
+        case "attendance":
+          return <span>{user.attendance}%</span>;
+        case "grades":
+          return (
+            <div className="flex flex-col gap-1">
+              <div className="text-sm text-default-500">
+                <span className="font-semibold">{user.grades}</span>
+              </div>
+            </div>
           );
         case "actions":
           return (
             <div className="relative flex items-center gap-2">
               <Tooltip content="Details">
-                <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+                <span
+                  className="text-lg text-default-400 cursor-pointer active:opacity-50"
+                  onClick={() => {
+                    setSelectedUser(user);
+                    onOpen();
+                  }}
+                >
                   <EyeIcon />
                 </span>
               </Tooltip>
-              <Tooltip content="Edit user">
+
+              {/* <Tooltip content="Details">
+                <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+                  <DownloadIcon />
+                </span>
+              </Tooltip> */}
+
+              {/* <Tooltip content="Edit user">
                 <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
                   <EditIcon />
                 </span>
@@ -107,7 +150,7 @@ export const StudentTable: React.FC<{
                 <span className="text-lg text-danger cursor-pointer active:opacity-50">
                   <DeleteIcon />
                 </span>
-              </Tooltip>
+              </Tooltip> */}
             </div>
           );
         default:
@@ -118,7 +161,8 @@ export const StudentTable: React.FC<{
   );
 
   return (
-    <Table aria-label="Example table with custom cells">
+    <>
+    <Table  aria-label="Student table with grades and attendance">
       <TableHeader columns={columns}>
         {(column) => (
           <TableColumn
@@ -141,5 +185,32 @@ export const StudentTable: React.FC<{
         )}
       </TableBody>
     </Table>
+    <Modal isOpen={isOpen} onClose={onClose} size="md">
+  <ModalContent>
+    <ModalHeader className="flex flex-col gap-1">
+      Информация об ученике
+    </ModalHeader>
+    <ModalBody>
+      {selectedUser && (
+        <div className="space-y-2">
+          <p><strong>Имя:</strong> {selectedUser.name}</p>
+          <p><strong>Email:</strong> {selectedUser.email}</p>
+          <p><strong>Команда:</strong> {selectedUser.team}</p>
+          <p><strong>Возраст:</strong> {selectedUser.age}</p>
+          <p><strong>Статус:</strong> {selectedUser.status}</p>
+          <p><strong>Роль:</strong> {selectedUser.role}</p>
+        </div>
+      )}
+    </ModalBody>
+    <ModalFooter>
+      <Button color="primary" onClick={onClose}>
+        Закрыть
+      </Button>
+    </ModalFooter>
+  </ModalContent>
+</Modal>
+
+
+    </>
   );
 };

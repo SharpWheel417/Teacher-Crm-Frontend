@@ -7,9 +7,6 @@ import {StudentTable} from "@/components/studentTable";
 
 export default function AdminStudentsPage() {
 
-
-
-
   return (
     <DefaultLayout noneContainer={false}>
       <div className="flex flex-row">
